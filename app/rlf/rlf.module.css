@@ -151,3 +151,22 @@
     font-style: italic;
     margin-top: 1rem;
 }
+
+@media (max-width: 768px) {
+    .header {
+        padding: 3rem 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .gridTwo {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .rulesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

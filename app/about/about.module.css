@@ -144,3 +144,30 @@
     font-size: 1rem !important;
     position: static !important;
 }
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .structure {
+        padding: 1.5rem;
+    }
+
+    .gridTwo {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .chain {
+        flex-direction: column;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+}

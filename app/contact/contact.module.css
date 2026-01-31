@@ -1,0 +1,82 @@
+.main {
+    padding: 5rem 0;
+    background-color: var(--background-light);
+    min-height: 80vh;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.infoBlock {
+    padding: 4rem;
+}
+
+.infoBlock h2 {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.item strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    color: var(--secondary-earth);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.item p {
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+.mapBlock {
+    background-color: var(--secondary-earth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapPlaceholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+}
+
+@media (max-width: 768px) {
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .infoBlock {
+        padding: 2rem;
+    }
+
+    .mapBlock {
+        min-height: 200px;
+    }
+}

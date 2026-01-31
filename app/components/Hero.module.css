@@ -1,0 +1,85 @@
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1932&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    margin-top: -80px;
+    /* Counteract navbar height for full bleed */
+    padding-top: 80px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4),
+            rgba(46, 125, 50, 0.7));
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title span {
+    color: var(--accent-gold);
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.ctaGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.secondaryBtn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--white);
+    color: var(--white);
+    backdrop-filter: blur(5px);
+}
+
+.secondaryBtn:hover {
+    background-color: var(--white);
+    color: var(--primary-green);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .hero {
+        height: auto;
+        padding: 150px 0 100px;
+    }
+}

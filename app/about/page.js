@@ -14,16 +14,50 @@ export default function About() {
             </section>
 
             <section className={`container ${styles.content}`}>
+                {/* Strategic Direction */}
+                <div className={styles.gridTwo}>
+                    <div className={styles.block}>
+                        <h2>Vision & Mission</h2>
+                        <div className={styles.subBlock}>
+                            <h3>Vision</h3>
+                            <p>To be a regional leader in community empowerment for rural development.</p>
+                        </div>
+                        <div className={styles.subBlock}>
+                            <h3>Mission</h3>
+                            <p>
+                                To empower local communities by enhancing their skill, knowledge and influencing
+                                their attitude, values and practices to effectively unlock their potential.
+                            </p>
+                        </div>
+                        <div className={styles.motto}>
+                            <strong>Motto:</strong> Unlock your potential
+                        </div>
+                    </div>
+
+                    <div className={styles.block}>
+                        <h2>Core Values</h2>
+                        <ul className={styles.valuesList}>
+                            <li>Team Work</li>
+                            <li>Integrity</li>
+                            <li>Innovativeness</li>
+                            <li>Professionalism</li>
+                            <li>Accountability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Why SNEP */}
                 <div className={styles.block}>
-                    <h2>Our Mission</h2>
+                    <h2>Why "Solution for Nature & Enterprise Programme"?</h2>
                     <p>
-                        SNEP has an approach to provide local communities with environmental conservation solutions based on Nature.
-                        We reach out to individuals and self-help groups and seek to maximize the use of local resources
-                        for poverty reduction—benefiting both humans and natural resources.
+                        Just like the name “Solution for Nature and Human Enterprise Development Programme”, the organization seeks
+                        to provide solutions to income generating activities through projects based on natural resources such as
+                        fruits, poultry, dairy, among others, which are of great importance to communities and national socio-economic growth.
                     </p>
                     <p>
-                        We mobilize local communities on environmental conservation solutions and support the efforts of members
-                        towards the implementation and promotion of sustainability for individual economic and social development.
+                        We have realized the great potential in the counties, with unique natural resources in rural Kenya,
+                        by focusing on enterprise development programmes designed to promote both social and natural resources
+                        development in the communities.
                     </p>
                 </div>
 

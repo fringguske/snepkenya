@@ -91,3 +91,56 @@
     font-style: italic;
     color: var(--text-light);
 }
+
+.gridTwo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.subBlock {
+    margin-bottom: 1.5rem;
+}
+
+.subBlock h3 {
+    font-size: 1.25rem;
+    color: var(--secondary-earth);
+    margin-bottom: 0.5rem;
+}
+
+.motto {
+    background: var(--primary-light);
+    padding: 1rem;
+    border-left: 4px solid var(--accent-gold);
+    font-size: 1.1rem;
+    color: var(--primary-green);
+    font-style: italic;
+}
+
+.valuesList {
+    list-style: none;
+    padding: 0 !important;
+    display: grid;
+    gap: 1rem;
+}
+
+.valuesList li {
+    background: var(--white);
+    padding: 1rem 1.5rem !important;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--secondary-earth);
+}
+
+.valuesList li::before {
+    content: '✓' !important;
+    color: var(--primary-green) !important;
+    margin-right: 1rem;
+    font-size: 1rem !important;
+    position: static !important;
+}

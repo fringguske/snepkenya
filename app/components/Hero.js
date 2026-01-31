@@ -8,7 +8,7 @@ export default function Hero() {
             <div className={`container ${styles.content}`}>
                 <h1 className={styles.title}>
                     Solutions for Nature <br />
-                    <span>& Enterprise</span>
+                    <span>& Enterprise Programme</span>
                 </h1>
                 <p className={styles.subtitle}>
                     Empowering communities in region through environmental conservation

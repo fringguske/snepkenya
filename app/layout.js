@@ -11,6 +11,7 @@ export const metadata = {
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ChatWidget from './components/ChatWidget'
 
 export default function RootLayout({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${roboto.variable}`}>
         <Navbar />
         {children}
+        <ChatWidget />
         <Footer />
       </body>
     </html>

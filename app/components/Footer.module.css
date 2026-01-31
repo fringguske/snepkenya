@@ -54,3 +54,13 @@
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
 }
+
+@media (max-width: 600px) {
+    .footer {
+        padding-top: 2rem;
+    }
+
+    .container {
+        gap: 2rem;
+    }
+}

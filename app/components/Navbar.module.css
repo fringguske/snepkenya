@@ -70,9 +70,65 @@
     width: 100%;
 }
 
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    /* Above Menu */
+}
+
+.bar,
+.barOpen {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-green);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        /* Show on mobile */
+    }
+
     .navLinks {
-        display: none;
-        /* Mobile menu to be implemented if needed */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden by default */
+        height: 100vh;
+        width: 70%;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 99;
+    }
+
+    .navActive {
+        right: 0;
+        /* Slide in */
+    }
+
+    /* Animate Hamburger to X */
+    .barOpen:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .barOpen:nth-child(2) {
+        opacity: 0;
+    }
+
+    .barOpen:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
     }
 }

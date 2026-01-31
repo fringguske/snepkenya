@@ -6,7 +6,8 @@ export default function Navbar() {
         <nav className={styles.navbar}>
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
-                    SNEP <span>KENYA</span>
+                    <img src="/logo.png" alt="SNEP Logo" className={styles.logoImage} />
+                    <span>SNEP <span className={styles.accent}>KENYA</span></span>
                 </Link>
                 <ul className={styles.navLinks}>
                     <li><Link href="/">Home</Link></li>

@@ -7,6 +7,9 @@ const roboto = Roboto_Slab({ subsets: ['latin'], variable: '--font-roboto' })
 export const metadata = {
   title: 'SNEP Kenya | Solution for Nature & Enterprise',
   description: 'Mobilizing local communities on environmental conservation solutions and poverty reduction.',
+  icons: {
+    icon: '/logo.png', // Replaces default Vercel icon
+  },
 }
 
 import Navbar from './components/Navbar'

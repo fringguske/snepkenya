@@ -69,7 +69,7 @@ export default function ChatWidget() {
                                 {formatMessage(msg.content)}
                             </div>
                         ))}
-                        {isLoading && <div className={`${styles.bubble} ${styles.bot}`}>Thinking...</div>}
+                        {isLoading && <div className={`${styles.bubble} ${styles.bot}`}>typing...</div>}
                         <div ref={messagesEndRef} />
                     </div>
 

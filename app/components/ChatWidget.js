@@ -45,6 +45,15 @@ export default function ChatWidget() {
         }
     };
 
+    // Helper to parse **bold** text
+    const formatMessage = (text) => {
+        if (!text) return "";
+        const parts = text.split(/\*\*(.*?)\*\*/g);
+        return parts.map((part, index) =>
+            index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+        );
+    };
+
     return (
         <div className={styles.widgetContainer}>
             {isOpen && (
@@ -57,7 +66,7 @@ export default function ChatWidget() {
                     <div className={styles.messages}>
                         {messages.map((msg, idx) => (
                             <div key={idx} className={`${styles.bubble} ${msg.role === 'user' ? styles.user : styles.bot}`}>
-                                {msg.content}
+                                {formatMessage(msg.content)}
                             </div>
                         ))}
                         {isLoading && <div className={`${styles.bubble} ${styles.bot}`}>Thinking...</div>}

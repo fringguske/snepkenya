@@ -25,15 +25,24 @@ export default function ChatWidget() {
         if (!input.trim()) return;
 
         const userMsg = input.trim();
-        setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+        // Create new message object
+        const newUserMsg = { role: 'user', content: userMsg };
+
+        // Update local state immediately
+        const newHistory = [...messages, newUserMsg];
+        setMessages(newHistory);
         setInput('');
         setIsLoading(true);
 
         try {
+            // Send the last 10 messages (plus system prompt context) to the API
+            // We slice to keep context window manageable
+            const recentHistory = newHistory.slice(-10);
+
             const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userMsg }),
+                body: JSON.stringify({ messages: recentHistory }),
             });
 
             const data = await res.json();

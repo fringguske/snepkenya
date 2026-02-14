@@ -3,7 +3,7 @@ import { snepContext } from '@/lib/snepContext';
 
 export async function POST(req) {
     try {
-        const { message } = await req.json();
+        const { messages: userHistory } = await req.json();
 
         // 1. Get Key
         let apiKey = process.env.gptchat;
@@ -16,15 +16,32 @@ export async function POST(req) {
         // 2. Clean Key
         apiKey = apiKey.trim();
 
-        // 3. Debug Log (Server Side)
-        // We log the first 5 and last 4 chars to verify it's the correct key without leaking the whole thing
-        const keyPreview = apiKey.length > 10
-            ? `${apiKey.substring(0, 5)}...${apiKey.substring(apiKey.length - 4)}`
-            : "KEY_TOO_SHORT";
+        // 3. Debug Log relative to history
+        console.log(`[Chat API] Processing ${userHistory.length} messages.`);
 
-        console.log(`[Chat API] Using Key: ${keyPreview} (Length: ${apiKey.length})`);
+        // 4. Construct Full Conversation
+        // System Prompt -> Context -> History
+        const fullConversation = [
+            {
+                role: "system",
+                content: `You are the SNEP Assistant. Your goal is to answer questions based strictly on the provided SNEP (Solution for Nature & Enterprise Programme) context.
+                
+                CONTEXT:
+                ${snepContext.substring(0, 3500)}
 
-        // 4. Direct Fetch call to OpenRouter
+                INSTRUCTIONS:
+                1. If the user asks about SNEP, loans, membership, or projects, answer using the context.
+                2. If the user asks about general topics, be flexible but try to relate it back to SNEP's mission where possible. 
+                   - Do NOT start every response with "That's interesting but..." or "How does this relate to SNEP?".
+                   - Instead, answer naturally and then optionally bridge back to SNEP if it feels organic.
+                   - If the user just says "sure", "okay", or "thanks", respond conversationally based on previous context.
+                3. Maintain conversation history (memory). If the user refers to a previous topic, use the conversation history to understand them.
+                4. Keep answers concise and helpful.`
+            },
+            ...userHistory
+        ];
+
+        // 5. Direct Fetch call to OpenRouter
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -35,23 +52,7 @@ export async function POST(req) {
             },
             body: JSON.stringify({
                 model: "openai/gpt-3.5-turbo",
-                messages: [
-                    {
-                        role: "system",
-                        content: `You are the SNEP Assistant. Your goal is to answer questions based strictly on the provided SNEP (Solution for Nature & Enterprise Programme) context.
-                        
-                        CONTEXT:
-                        ${snepContext.substring(0, 3500)}
-
-                        INSTRUCTIONS:
-                        1. If the user asks about SNEP, loans, membership, or projects, answer using the context.
-                        2. If the user asks about general topics (e.g., "What is the capital of France?", "Write a poem"), GENTLY STEER them back to SNEP.
-                           - Example: "That's an interesting question, but I specialize in SNEP's environmental and enterprise solutions. Did you know SNEP operates in over 30 counties to empower local communities?"
-                        3. Do not be rude, but firmly revolve the conversation around SNEP's mission, values, and services.
-                        4. Keep answers concise and helpful.`
-                    },
-                    { role: "user", content: message }
-                ],
+                messages: fullConversation,
             })
         });
 

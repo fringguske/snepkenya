@@ -20,14 +20,12 @@ export default function Contact() {
 
                             <div className={styles.item}>
                                 <strong>Location</strong>
-                                <p>Gilgal Apartment, MACHAKOS</p>
+                                <p>Gilgal Apartment, Machakos Town</p>
                             </div>
 
                             <div className={styles.item}>
                                 <strong>Phone</strong>
-                                <p>0720 517 870</p>
-                                <p>07310 170 316</p>
-                                <p>0710-316-970-517-470</p>
+                                <p>07000000000</p>
                             </div>
                         </div>
                     </div>

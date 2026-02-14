@@ -20,11 +20,10 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.section}>
-                    <h4>Contact Us</h4>
-                    <p>P.O. BOX 1862 MACHAKOS</p>
-                    <p>Giligil Apartment, MACHAKOS</p>
-                    <p>Tel: 0720 517 870 / 07310 170 316</p>
-                    <p>0710-316-970-517-470</p>
+                    <h3>Contact Us</h3>
+                    <p>P.O. BOX 1862, MACHAKOS</p>
+                    <p>Gilgal Apartment</p>
+                    <p>Phone: 07000000000</p>
                 </div>
             </div>
             <div className={styles.copyright}>

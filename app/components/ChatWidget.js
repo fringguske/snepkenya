@@ -6,7 +6,7 @@ import styles from './ChatWidget.module.css';
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: 'Hello! I am the SNEP Assistant. Ask me anything about our projects, loans, or membership!' }
+        { role: 'assistant', content: 'Hello! I am the SNEP Assistant. Ask me anything about our projects, loans, or membership!.' }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);

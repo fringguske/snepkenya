@@ -9,7 +9,7 @@ export default function Contact() {
                     <div className={styles.infoBlock}>
                         <h2>Get in Touch</h2>
                         <p className={styles.description}>
-                            We are located at Giligil Apartment, Machakos Town. Feel free to visit us or contact us via phone.
+                            We are located at Gilgal Apartment, Machakos Town. Feel free to visit us or contact us via phone.
                         </p>
 
                         <div className={styles.details}>
@@ -20,7 +20,7 @@ export default function Contact() {
 
                             <div className={styles.item}>
                                 <strong>Location</strong>
-                                <p>Giligil Apartment, MACHAKOS</p>
+                                <p>Gilgal Apartment, MACHAKOS</p>
                             </div>
 
                             <div className={styles.item}>

@@ -33,9 +33,9 @@ export default function RLFModel() {
                                 <tbody>
                                     <tr><td>Registration Fee</td><td>Ksh 150</td></tr>
                                     <tr><td>Passbook</td><td>Ksh 150</td></tr>
-                                    <tr><td>Minimum Saving</td><td>Ksh 300</td></tr>
+                                    <tr><td>Minimum Saving</td><td>Ksh 500</td></tr>
                                     <tr><td>Risk Fund</td><td>Ksh 50</td></tr>
-                                    <tr className={styles.totalRow}><td>Total</td><td>Ksh 650</td></tr>
+                                    <tr className={styles.totalRow}><td>Total</td><td>Ksh 850</td></tr>
                                 </tbody>
                             </table>
                         </div>

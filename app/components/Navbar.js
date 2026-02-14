@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
                     <img src="/logo.png" alt="SNEP Logo" className={styles.logoImage} />
-                    <span>SNEP <span className={styles.accent}>KENYA</span></span>
+                    <span>SNEP<span className={styles.accent}>KENYA</span></span>
                 </Link>
 
                 <button

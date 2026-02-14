@@ -73,12 +73,21 @@ export default function About() {
 
                 <div className={styles.structure}>
                     <h2>Organizational Structure</h2>
-                    <div className={styles.chain}>
-                        <div className={styles.node}>MEMBERS</div>
-                        <div className={styles.arrow}>→</div>
-                        <div className={styles.node}>GROUPS</div>
-                        <div className={styles.arrow}>→</div>
-                        <div className={styles.node}>SNEP</div>
+                    <div className={styles.triangleContainer}>
+                        <div className={styles.topNode}>
+                            <div className={styles.node}>SNEP</div>
+                        </div>
+
+                        <div className={styles.diagramArrows}>
+                            <div className={styles.leftArrow}>↔</div>
+                            <div className={styles.rightArrow}>↔</div>
+                        </div>
+
+                        <div className={styles.bottomNodes}>
+                            <div className={styles.node}>MEMBERS</div>
+                            <div className={styles.bottomArrow}>↔</div>
+                            <div className={styles.node}>GROUPS</div>
+                        </div>
                     </div>
                     <p className={styles.caption}>
                         We believe in a model that motivates the spirit of saving and financial discipline through group-based structures.

@@ -62,15 +62,6 @@
     box-shadow: var(--shadow-sm);
 }
 
-.chain {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
-
 .node {
     background-color: var(--white);
     padding: 1rem 2rem;
@@ -79,11 +70,51 @@
     color: var(--secondary-earth);
     border: 2px solid var(--primary-green);
     box-shadow: var(--shadow-md);
+    z-index: 2;
+    min-width: 120px;
 }
 
-.arrow {
+.triangleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+    gap: 0.5rem;
+}
+
+.topNode {
+    z-index: 2;
+}
+
+.diagramArrows {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    height: 60px;
+    align-items: center;
+    font-size: 2.5rem;
     color: var(--accent-gold);
-    font-size: 2rem;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.leftArrow {
+    transform: rotate(-60deg);
+}
+
+.rightArrow {
+    transform: rotate(60deg);
+}
+
+.bottomNodes {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.bottomArrow {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
     font-weight: bold;
 }
 
@@ -169,5 +200,25 @@
 
     .arrow {
         transform: rotate(90deg);
+    }
+
+    /* Mobile Triangle Adjustments */
+    .triangleContainer {
+        transform: scale(0.8);
+        gap: 0;
+    }
+
+    .diagramArrows {
+        gap: 5rem;
+    }
+
+    .bottomNodes {
+        gap: 0.5rem;
+    }
+
+    .node {
+        padding: 0.75rem 1rem;
+        min-width: auto;
+        font-size: 0.9rem;
     }
 }

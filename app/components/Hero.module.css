@@ -35,7 +35,8 @@
     grid-template-columns: 1.2fr 0.85fr;
     gap: 3rem;
     align-items: center;
-    padding: 5.5rem 0 4.5rem;
+    /* Keep the global container's horizontal padding; add vertical breathing room only. */
+    padding-block: 5.5rem 4.5rem;
 }
 
 .copy {
@@ -271,7 +272,7 @@
     .container {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 4.5rem 0 3.25rem;
+        padding-block: 4.5rem 3.25rem;
     }
 
     .sideCard {

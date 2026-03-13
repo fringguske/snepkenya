@@ -1,0 +1,116 @@
+.section {
+    padding: 6rem 0;
+    background:
+        radial-gradient(900px 360px at 20% 0%, rgba(46, 125, 50, 0.18), transparent 60%),
+        radial-gradient(700px 260px at 85% 15%, rgba(251, 192, 45, 0.2), transparent 58%),
+        var(--primary-light);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.copy {
+    max-width: 520px;
+}
+
+.kicker {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 750;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-green);
+    background: rgba(46, 125, 50, 0.12);
+    border: 1px solid rgba(46, 125, 50, 0.18);
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: var(--text-main);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+.ctaRow {
+    margin-top: 1.75rem;
+}
+
+.cta {
+    box-shadow: var(--shadow-md);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.label {
+    margin: 0;
+    color: var(--text-light);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.value {
+    margin: 0.4rem 0 0;
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: var(--secondary-earth);
+}
+
+@media (max-width: 960px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .copy {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 600px) {
+    .section {
+        padding: 4.5rem 0;
+    }
+
+    .title {
+        font-size: 2.1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+

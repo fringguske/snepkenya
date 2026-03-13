@@ -22,7 +22,7 @@ export default function RLFModel() {
                             <h3>Qualifying for Group Membership</h3>
                             <ul>
                                 <li>Must be over 18 years old.</li>
-                                <li>Must be a registered member of a group within your location/residence.</li>
+                                <li>Must be a registered member of a group.</li>
                                 <li>Good record of moral values and self-discipline.</li>
                                 <li>Willingness to pay fines and participate in group activities.</li>
                             </ul>
@@ -60,7 +60,7 @@ export default function RLFModel() {
                         </div>
                         <div className={styles.ruleItem}>
                             <span>Loan Multiplier</span>
-                            <strong>x2 Member Savings</strong>
+                            <strong>x2.5 Member Savings</strong>
                         </div>
                     </div>
                     <div className={styles.infoBox}>
@@ -79,9 +79,6 @@ export default function RLFModel() {
                         <h3>Withdrawal of Shares</h3>
                         <ul>
                             <li>Notice period: One Month.</li>
-                            <li>Can only withdraw 40% of total shares.</li>
-                            <li>Cannot borrow advance/loan for 3 months after withdrawal.</li>
-                            <li>Must not have guaranteed any active loan.</li>
                         </ul>
                     </div>
                 </section>
@@ -98,7 +95,7 @@ export default function RLFModel() {
                             <li>Death</li>
                         </ul>
                     </div>
-                    <p className={styles.note}>* The risk fund does not cover business commerce failures.</p>
+                    
                 </section>
 
             </div>

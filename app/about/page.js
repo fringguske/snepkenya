@@ -48,9 +48,9 @@ export default function About() {
 
                 {/* Why SNEP */}
                 <div className={styles.block}>
-                    <h2>Why "Solution for Nature & Enterprise Programme"?</h2>
+                    <h2>Why &quot;Solution for Nature &amp; Enterprise Programme&quot;?</h2>
                     <p>
-                        Just like the name “Solution for Nature and Human Enterprise Development Programme”, the organization seeks
+                        Just like the name &quot;Solution for Nature and Human Enterprise Development Programme&quot;, the organization seeks
                         to provide solutions to income generating activities through projects based on natural resources such as
                         fruits, poultry, dairy, among others, which are of great importance to communities and national socio-economic growth.
                     </p>
@@ -66,7 +66,7 @@ export default function About() {
                     <ul>
                         <li>Working with County and National Government, Policy makers, and Development partners.</li>
                         <li>Improving sharing, learning, and dissemination of knowledge, skills, and values required for sustainable development.</li>
-                        <li>Encouraging dissemination of individual's savings of knowledge.</li>
+                        <li>Encouraging dissemination of individual&apos;s savings of knowledge.</li>
                         <li>Converting skills into Income Generating Activities (IGAs) and manufacturing quality, affordable products.</li>
                     </ul>
                 </div>

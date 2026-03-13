@@ -26,8 +26,9 @@
 }
 
 .logoImage {
+    width: 40px;
     height: 40px;
-    width: auto;
+    object-fit: contain;
 }
 
 .logo span {
@@ -68,6 +69,35 @@
 
 .navLinks a:hover::after {
     width: 100%;
+}
+
+.staffItem {
+    display: flex;
+    align-items: center;
+}
+
+.staffLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(46, 125, 50, 0.35);
+    background: rgba(46, 125, 50, 0.08);
+    color: var(--primary-green);
+    font-weight: 750;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.staffLink:hover {
+    transform: translateY(-1px);
+    background: var(--primary-green);
+    color: var(--white);
+    border-color: var(--primary-green);
+}
+
+.staffLink::after {
+    content: none;
 }
 
 /* Hamburger Button */

@@ -6,7 +6,7 @@ const roboto = Roboto_Slab({ subsets: ['latin'], variable: '--font-roboto' })
 
 export const metadata = {
   title: 'SNEP Kenya | Solution for Nature & Enterprise',
-  description: 'Mobilizing local communities on environmental conservation solutions and poverty reduction.',
+  description: 'Mobilizing local communities through environmental conservation, enterprise development, and the Revolving Loan Fund (RLF).',
   icons: {
     icon: '/logo.png', // Replaces default Vercel icon
   },

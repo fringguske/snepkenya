@@ -1,6 +1,12 @@
 .section {
     padding: 6rem 0;
     background-color: var(--white);
+    scroll-margin-top: 96px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -28,6 +34,8 @@
     border-radius: var(--radius-lg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -62,4 +70,27 @@
     color: var(--text-light);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+.cardFooter {
+    margin-top: auto;
+    padding-top: 1.25rem;
+}
+
+.cardLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 750;
+    color: var(--primary-green);
+    width: fit-content;
+}
+
+.cardLink::after {
+    content: "->";
+    opacity: 0.85;
+}
+
+.cardLink:hover {
+    color: var(--primary-hover);
 }

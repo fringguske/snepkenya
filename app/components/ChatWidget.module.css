@@ -13,13 +13,17 @@
     background-color: var(--primary-green);
     color: white;
     border: none;
-    font-size: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.toggleBtn svg {
+    width: 28px;
+    height: 28px;
 }
 
 .toggleBtn:hover {
@@ -146,6 +150,11 @@
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+}
+
+.sendBtn svg {
+    width: 18px;
+    height: 18px;
 }
 
 .sendBtn:disabled {

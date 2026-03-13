@@ -6,7 +6,7 @@ import styles from './ChatWidget.module.css';
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: 'Hello! I am the SNEP Assistant. Ask me anything about our projects, loans, or membership!.' }
+        { role: 'assistant', content: 'Hello! I am the SNEP Assistant. Ask me anything about our projects, loans, or membership.' }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +69,9 @@ export default function ChatWidget() {
                 <div className={styles.chatWindow}>
                     <div className={styles.header}>
                         <h3>SNEP Support</h3>
-                        <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>×</button>
+                        <button onClick={() => setIsOpen(false)} className={styles.closeBtn} aria-label="Close chat">
+                            &times;
+                        </button>
                     </div>
 
                     <div className={styles.messages}>
@@ -91,7 +93,15 @@ export default function ChatWidget() {
                             className={styles.input}
                         />
                         <button type="submit" disabled={isLoading || !input.trim()} className={styles.sendBtn}>
-                            ➤
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M4 12h14M14 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
                         </button>
                     </form>
                 </div>
@@ -102,7 +112,27 @@ export default function ChatWidget() {
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle Chat"
             >
-                {isOpen ? '▼' : '💬'}
+                {isOpen ? (
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M6 6l12 12M18 6L6 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                ) : (
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M21 12a8 8 0 01-8 8H7l-4 3 1.2-4.8A8 8 0 015 4h8a8 8 0 018 8z"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                )}
             </button>
         </div>
     );

@@ -1,0 +1,185 @@
+.section {
+    padding: 6rem 0;
+    background:
+        radial-gradient(900px 300px at 15% 20%, rgba(62, 39, 35, 0.08), transparent 62%),
+        radial-gradient(800px 260px at 80% 10%, rgba(46, 125, 50, 0.1), transparent 60%),
+        var(--background-light);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 3rem;
+}
+
+.title {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+    align-items: stretch;
+}
+
+.card {
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.cardTitle {
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
+}
+
+.cardBlock p {
+    color: var(--text-light);
+    line-height: 1.75;
+}
+
+.motto {
+    margin-top: auto;
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.25rem 1.1rem;
+    background: var(--primary-light);
+    border: 1px solid rgba(46, 125, 50, 0.16);
+}
+
+.mottoLabel {
+    margin: 0;
+    color: var(--primary-green);
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.mottoValue {
+    margin: 0.3rem 0 0;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--secondary-earth);
+}
+
+.valuesList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding: 0;
+    margin: 0;
+}
+
+.valueItem {
+    background: var(--background-light);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 999px;
+    padding: 0.65rem 0.85rem;
+    font-weight: 750;
+    color: var(--text-main);
+}
+
+.cardNote {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cardNote p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.ctaRow {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.75rem;
+    flex-wrap: wrap;
+}
+
+.cta {
+    box-shadow: var(--shadow-md);
+}
+
+.secondaryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.1rem;
+    border-radius: var(--radius-md);
+    font-weight: 750;
+    border: 2px solid var(--secondary-earth);
+    color: var(--secondary-earth);
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    background: transparent;
+}
+
+.secondaryBtn:hover {
+    background: var(--secondary-earth);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .valuesList {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .section {
+        padding: 4.5rem 0;
+    }
+
+    .title {
+        font-size: 2.15rem;
+    }
+
+    .card {
+        padding: 1.75rem;
+    }
+
+    .ctaRow a {
+        width: 100%;
+        text-align: center;
+    }
+}
+

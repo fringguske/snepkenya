@@ -1,5 +1,123 @@
 import { NextResponse } from 'next/server';
-import { snepContext } from '@/lib/snepContext';
+import fs from 'node:fs';
+import path from 'node:path';
+import { snepBaseContext } from '@/lib/snepBaseContext';
+
+const POLICY_MD_PATH = path.join(process.cwd(), 'lib', 'policies', 'snep-policy-2025.md');
+
+function safeReadUtf8(filePath) {
+    try {
+        return fs.readFileSync(filePath, 'utf8');
+    } catch (err) {
+        console.warn(`[Chat API] Could not read policy file at ${filePath}:`, err?.message ?? err);
+        return '';
+    }
+}
+
+function normalizeHeading(title) {
+    return title.trim().replace(/:\s*$/, '');
+}
+
+function isPolicyHeading(line) {
+    const t = line.trim();
+    if (!t) return false;
+    if (/^_+$/.test(t)) return true; // separator line
+    if (t === 'Dividends') return true;
+    if (/^Requirements to become a member$/i.test(t)) return true;
+    if (t.endsWith(':') && t.length <= 40) return true;
+    const isAllCaps = t === t.toUpperCase();
+    if (isAllCaps && /^[A-Z0-9][A-Z0-9 .&()/,'-]{2,}$/.test(t) && t.length <= 80) return true;
+    return false;
+}
+
+function parsePolicyMarkdown(md) {
+    if (!md) return [];
+
+    const lines = md.split(/\r?\n/);
+    const bodyStart = Math.max(0, lines.findIndex((l) => l.includes('GROUP CONSTITUTION')));
+    const body = lines.slice(bodyStart);
+
+    const sections = [];
+    let currentTitle = 'SNEP POLICY-2025';
+    let currentLines = [];
+
+    const pushSection = () => {
+        const text = currentLines.join('\n').trim();
+        const title = normalizeHeading(currentTitle);
+        if (text.length === 0) return;
+        sections.push({
+            title,
+            text,
+            search: `${title}\n${text}`.toLowerCase(),
+        });
+    };
+
+    for (const rawLine of body) {
+        const line = rawLine.trimEnd();
+        if (!line.trim()) continue;
+
+        if (/^_+$/.test(line.trim())) {
+            continue; // ignore separator
+        }
+
+        if (isPolicyHeading(line)) {
+            pushSection();
+            currentTitle = line;
+            currentLines = [];
+            continue;
+        }
+
+        currentLines.push(line.trim());
+    }
+
+    pushSection();
+    return sections;
+}
+
+const policySections = parsePolicyMarkdown(safeReadUtf8(POLICY_MD_PATH));
+
+function tokenize(text) {
+    return (text || '')
+        .toLowerCase()
+        // keep numbers and letters
+        .replace(/[^a-z0-9]+/g, ' ')
+        .split(/\s+/)
+        .filter((t) => t.length >= 3)
+        .slice(0, 40);
+}
+
+function scoreSection(tokens, sectionSearchText) {
+    let score = 0;
+    for (const token of tokens) {
+        if (sectionSearchText.includes(token)) score += 1;
+    }
+    return score;
+}
+
+function buildPolicyExcerpts(question) {
+    if (!policySections.length) {
+        return { excerpts: '', usedTitles: [] };
+    }
+
+    const tokens = tokenize(question);
+    const ranked = policySections
+        .map((sec) => ({ sec, score: scoreSection(tokens, sec.search) }))
+        .filter((x) => x.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+        .map((x) => x.sec);
+
+    if (ranked.length === 0) {
+        return { excerpts: '', usedTitles: [] };
+    }
+
+    const excerpts = ranked
+        .map((sec) => `SECTION: ${sec.title}\n${sec.text}`)
+        .join('\n\n')
+        .slice(0, 2600);
+
+    return { excerpts, usedTitles: ranked.map((s) => s.title) };
+}
 
 export async function POST(req) {
     try {
@@ -19,24 +137,38 @@ export async function POST(req) {
         // 3. Debug Log relative to history
         console.log(`[Chat API] Processing ${userHistory.length} messages.`);
 
+        const lastUserMessage = [...userHistory].reverse().find((m) => m?.role === 'user')?.content ?? '';
+        const { excerpts: policyExcerpts } = buildPolicyExcerpts(lastUserMessage);
+
         // 4. Construct Full Conversation
-        // System Prompt -> Context -> History
+        // System Prompt -> Sources -> History
+        const systemPrompt = `You are the SNEP Assistant for SNEP Kenya.
+
+GOAL
+Give accurate, helpful answers about SNEP, membership, loans/advances, and related policies.
+
+STRICT ACCURACY RULES
+1) Use only the SOURCES provided below. Do not guess or invent details.
+2) If the answer is not in the sources, say so clearly and suggest contacting SNEP using the contact details in the sources.
+3) If there is a conflict between sources, prefer SNEP POLICY-2025 for RLF rules and figures.
+4) Keep numbers and requirements exact (do not round or “approximate”).
+5) When you use a policy rule, include a short "Source:" line that names the policy section(s) you relied on.
+
+STYLE
+- Clear, concise, and practical.
+- If the user asks a broad question, ask 1 clarifying question before giving a detailed answer.
+
+SOURCES
+SNEP WEBSITE FACTS
+${snepBaseContext}
+
+SNEP POLICY-2025 (EXCERPTS)
+${policyExcerpts || 'No policy excerpt matched the current question. If the user asks about RLF rules, try to answer only if it is found in the policy.'}`;
+
         const fullConversation = [
             {
                 role: "system",
-                content: `You are the SNEP Assistant. Your goal is to answer questions based strictly on the provided SNEP (Solution for Nature & Enterprise Programme) context.
-                
-                CONTEXT:
-                ${snepContext.substring(0, 3500)}
-
-                INSTRUCTIONS:
-                1. If the user asks about SNEP, loans, membership, or projects, answer using the context.
-                2. If the user asks about general topics, be flexible but try to relate it back to SNEP's mission where possible. 
-                   - Do NOT start every response with "That's interesting but..." or "How does this relate to SNEP?".
-                   - Instead, answer naturally and then optionally bridge back to SNEP if it feels organic.
-                   - If the user just says "sure", "okay", or "thanks", respond conversationally based on previous context.
-                3. Maintain conversation history (memory). If the user refers to a previous topic, use the conversation history to understand them.
-                4. Keep answers concise and helpful.`
+                content: systemPrompt
             },
             ...userHistory
         ];
@@ -53,6 +185,7 @@ export async function POST(req) {
             body: JSON.stringify({
                 model: "openai/gpt-3.5-turbo",
                 messages: fullConversation,
+                temperature: 0.2,
             })
         });
 

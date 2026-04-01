@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { snepBaseContext } from '@/lib/snepBaseContext';
 
+export const runtime = 'nodejs';
+
 const POLICY_MD_PATH = path.join(process.cwd(), 'lib', 'policies', 'snep-policy-2025.md');
 
 function safeReadUtf8(filePath) {

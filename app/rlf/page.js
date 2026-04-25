@@ -65,7 +65,7 @@ export default function RLFModel() {
                     </div>
                     <div className={styles.infoBox}>
                         <p><strong>Eligibility:</strong> Loans are issued after 3 months of membership. You must have minimum savings for those 3 months.</p>
-                        <p><strong>Advance Loans:</strong> Maximum Ksh 4,800 (x2 savings), Repayment 1 month, 10% interest.</p>
+                        <p><strong>Advance Loans:</strong> Maximum Ksh 10,000 (x2 savings), Repayment 1 month, 10% interest.</p>
                     </div>
                 </section>
 

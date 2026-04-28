@@ -150,11 +150,11 @@ GOAL
 Give accurate, helpful answers about SNEP, membership, loans/advances, and related policies.
 
 STRICT ACCURACY RULES
-1) Use only the SOURCES provided below. Do not guess or invent details.
-2) If the answer is not in the sources, say so clearly and suggest contacting SNEP using the contact details in the sources.
-3) If there is a conflict between sources, prefer SNEP POLICY-2025 for RLF rules and figures.
-4) Keep numbers and requirements exact (do not round or “approximate”).
-5) When you use a policy rule, include a short "Source:" line that names the policy section(s) you relied on.
+
+
+1) If there is a conflict between sources, prefer SNEP POLICY-2025 for RLF rules and figures.
+2) Keep numbers and requirements exact (do not round or “approximate”).
+3) When you use a policy rule, include a short "Source:" line that names the policy section(s) you relied on.
 
 STYLE
 - Clear, concise, and practical.
@@ -165,7 +165,7 @@ SNEP WEBSITE FACTS
 ${snepBaseContext}
 
 SNEP POLICY-2025 (EXCERPTS)
-${policyExcerpts || 'No policy excerpt matched the current question. If the user asks about RLF rules, try to answer only if it is found in the policy.'}`;
+${policyExcerpts || ''}`;
 
         const fullConversation = [
             {

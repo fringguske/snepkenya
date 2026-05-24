@@ -29,15 +29,14 @@ export default function ProjectsPreview() {
                     </p>
                 </div>
 
-                <div className={styles.grid} role="list" aria-label="Project areas">
-                    {projects.map((project) => (
-                        <div key={project} className={styles.chip} role="listitem">
-                            <span className={styles.chipIcon} aria-hidden="true">
-                                {project[0]}
-                            </span>
-                            <span className={styles.chipLabel}>{project}</span>
-                        </div>
-                    ))}
+                <div className={styles.listCard}>
+                    <ul className={styles.list} aria-label="Project areas">
+                        {projects.map((project) => (
+                            <li key={project} className={styles.item}>
+                                {project}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
                 <div className={styles.ctaRow}>

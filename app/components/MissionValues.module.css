@@ -1,9 +1,7 @@
 .section {
-    padding: 6rem 0;
-    background:
-        radial-gradient(900px 300px at 15% 20%, rgba(62, 39, 35, 0.08), transparent 62%),
-        radial-gradient(800px 260px at 80% 10%, rgba(46, 125, 50, 0.1), transparent 60%),
-        var(--background-light);
+    padding: 5rem 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .container {
@@ -18,7 +16,7 @@
 }
 
 .title {
-    font-size: 2.6rem;
+    font-size: 2.25rem;
     margin-bottom: 1rem;
     position: relative;
     padding-bottom: 1rem;
@@ -51,9 +49,9 @@
 
 .card {
     background: var(--white);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     padding: 2.25rem;
     display: flex;
     flex-direction: column;
@@ -74,8 +72,9 @@
     margin-top: auto;
     border-radius: var(--radius-lg);
     padding: 1.25rem 1.25rem 1.1rem;
-    background: var(--primary-light);
-    border: 1px solid rgba(46, 125, 50, 0.16);
+    background: var(--white);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--primary-green);
 }
 
 .mottoLabel {
@@ -104,9 +103,9 @@
 }
 
 .valueItem {
-    background: var(--background-light);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 999px;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
     padding: 0.65rem 0.85rem;
     font-weight: 750;
     color: var(--text-main);
@@ -166,11 +165,11 @@
 
 @media (max-width: 600px) {
     .section {
-        padding: 4.5rem 0;
+        padding: 4rem 0;
     }
 
     .title {
-        font-size: 2.15rem;
+        font-size: 2rem;
     }
 
     .card {

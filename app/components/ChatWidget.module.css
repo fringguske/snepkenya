@@ -1,19 +1,19 @@
 .widgetContainer {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1.25rem + env(safe-area-inset-right, 0px));
     z-index: 1000;
     font-family: var(--font-inter), sans-serif;
 }
 
 .toggleBtn {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background-color: var(--primary-green);
     color: white;
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-md);
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
     display: flex;
@@ -22,8 +22,8 @@
 }
 
 .toggleBtn svg {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
 }
 
 .toggleBtn:hover {
@@ -33,17 +33,17 @@
 
 .chatWindow {
     position: absolute;
-    bottom: 80px;
+    bottom: 64px;
     right: 0;
     width: 350px;
     height: 500px;
     background: white;
-    border-radius: 1rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
     animation: slideIn 0.3s ease;
 }
 
@@ -168,7 +168,7 @@
 
 @media (max-width: 480px) {
     .chatWindow {
-        width: calc(100vw - 4rem);
+        width: calc(100vw - 2.5rem);
         height: 60vh;
     }
 }

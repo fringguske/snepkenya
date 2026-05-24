@@ -44,8 +44,8 @@ export default function FeatureSection() {
                 <div className={styles.header}>
                     <h2 id="focus-title" className="section-title">What We Focus On</h2>
                     <p>
-                        We combine group-based financial empowerment with environmental stewardship and practical skills to support
-                        sustainable community development.
+                        We work with community groups through the Revolving Loan Fund (RLF), environmental conservation solutions,
+                        and empowerment workshops that support skills and knowledge.
                     </p>
                 </div>
                 <div className={styles.grid}>
